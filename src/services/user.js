@@ -8,6 +8,12 @@ const create = async (displayName, email, password, image) => {
   if (!verifyEmail) return User.create({ displayName, email, password, image });
 };
 
+const getAll = async () => {
+  const users = await User.findAll({ attributes: { exclude: 'password' } });
+  return users;
+};
+
 module.exports = {
   create,
+  getAll,
 };
