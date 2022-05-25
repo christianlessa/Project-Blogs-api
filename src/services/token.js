@@ -12,6 +12,12 @@ const generateToken = (id) => {
   return token;
 };
 
+const decodingToken = (authorization) => {
+  const decodedToken = jwt.verify(authorization, secret);
+  return decodedToken;
+};
+
 module.exports = {
   generateToken,
+  decodingToken,
 };
