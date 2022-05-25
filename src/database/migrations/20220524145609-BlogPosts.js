@@ -19,7 +19,7 @@ module.exports = {
       },
       userId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       published: {
         allowNull: false,
