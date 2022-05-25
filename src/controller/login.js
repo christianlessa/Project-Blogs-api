@@ -1,14 +1,16 @@
-const serviceLogin = require('../services/user');
+const loginServices = require('../services/login');
 
-const loginUser = async (req, res) => {
+const create = async (req, res) => {
+  const { displayName, email, password, image } = req.body;
+
   try {
-    const { email, password } = req.body;
-
-    const jwt = await serviceLogin.create(email, password);
-    return jwt;
+    const token = await loginServices.create(displayName, email, password, image);
+    return res.status(200).json({ token });
   } catch (error) {
     return res.status(400).json({ message: error.message });
   }
 };
 
-module.exports = { loginUser };
+module.exports = {
+  create,
+};
