@@ -1,5 +1,4 @@
 const { User } = require('../database/models');
-// const token = require('./token');
 
 const create = async (displayName, email, password, image) => {
   const verifyEmail = await User.findOne({ where: { email } });

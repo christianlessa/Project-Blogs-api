@@ -1,5 +1,7 @@
 'use strict';
 
+const { DATETIME } = require("mysql2/lib/constants/types");
+
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable("BlogPosts", {
@@ -24,12 +26,10 @@ module.exports = {
         onDelete: 'CASCADE',
         references: { model: "Users", key: "id" }
       },
-      published: {
-        allowNull: false,
+      updated: {
         type: Sequelize.DATE
       },
-      updated: {
-        allowNull: false,
+      published: {
         type: Sequelize.DATE
       }
     });
