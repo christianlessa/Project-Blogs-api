@@ -53,8 +53,27 @@ const getById = async (id) => {
   return allInfor;
 };
 
+const update = async (id, idUser, title, content) => {
+  const allInfor = await getById(id);
+
+  if (idUser !== allInfor.user.id) throw Error('Unauthorized user');
+
+  if (idUser === allInfor.user.id) {
+    await BlogPost.update(
+      { title, content },
+      { where: { id } },
+    );
+  }
+
+  allInfor.title = title;
+  allInfor.content = content;
+
+  return allInfor;
+};
+
 module.exports = {
   create,
   getAll,
   getById,
+  update,
 };
