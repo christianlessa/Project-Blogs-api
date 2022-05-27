@@ -6,6 +6,7 @@ const { titleValid, contentValid, categoryIdValid } = require('../middleware/pos
 const { authorizationUser } = require('../middleware/authorization');
 
 router.get('/', authorizationUser, postController.getAll);
+router.get('/:id', authorizationUser, postController.getById);
 router.post('/',
  authorizationUser, titleValid, contentValid, categoryIdValid, postController.create);
 

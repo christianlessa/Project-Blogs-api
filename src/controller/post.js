@@ -14,14 +14,26 @@ const create = async (req, res) => {
 
 const getAll = async (req, res) => {
   try {
-    const allPosts = await postServices.getAll();
-    return res.status(200).json(allPosts);
+    const allInfor = await postServices.getAll();
+    return res.status(200).json(allInfor);
   } catch (error) {
     return res.status(400).json({ message: error.message });
+  }
+};
+
+const getById = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const allInfor = await postServices.getById(id);
+    return res.status(200).json(allInfor);
+  } catch (error) {
+    return res.status(404).json({ message: error.message });
   }
 };
 
 module.exports = {
   create,
   getAll,
+  getById,
 };
